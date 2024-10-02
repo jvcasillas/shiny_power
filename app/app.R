@@ -35,8 +35,8 @@ myplot <- function(sigma, m1, m2, n, alpha) {
 ui <- fluidPage(theme = shinytheme("spacelab"),
     
     # Application title
-    h3("Power/Sample size calculator"),
-    
+    titlePanel("Power/Sample size calculator", windowTitle = "Power"),
+
     sidebarLayout(
         sidebarPanel(
 
