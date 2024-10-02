@@ -1,7 +1,21 @@
 library("shiny") 
 library("ggplot2") 
 library("datasets")
-library("shinythemes")
+library("bslib")
+
+# shinylive::export("app", "docs")
+
+theme <- bs_theme(
+  # Controls the default grayscale palette
+  bg = "#fff", fg = "#202123",
+  # Controls the accent (e.g., hyperlink, button, etc) colors
+  primary = "#cc0033", secondary = "#48DAC6",
+  base_font = c("Grandstander", "sans-serif"),
+  code_font = c("Courier", "monospace"),
+  heading_font = "'Helvetica Neue', Helvetica, sans-serif",
+  # Can also add lower-level customization
+  "input-border-color" = "#cc0033"
+)
 
 myplot <- function(sigma, m1, m2, n, alpha) {
   g <- ggplot(data.frame(mu = c(m1-sigma*2, m2+sigma*2)), aes(x = mu))
@@ -32,7 +46,7 @@ myplot <- function(sigma, m1, m2, n, alpha) {
 }
 
 # Define UI for miles per gallon application
-ui <- fluidPage(theme = shinytheme("spacelab"),
+ui <- fluidPage(theme = theme,
     
     # Application title
     titlePanel("Power/Sample size calculator", windowTitle = "Power"),
